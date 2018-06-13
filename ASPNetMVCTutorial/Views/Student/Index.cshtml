@@ -7,6 +7,8 @@
 
 <h2>Students</h2>
 
+<p class="pull-right"><strong>@DateTime.Now.ToString("dd/MM/yyyy")</strong></p>
+
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
@@ -21,20 +23,54 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Age)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
-
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Age)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
 </table>
+
+<hr />
+<p>Random Razor practises below:</p>
+
+<p>
+    @{
+        var date = DateTime.Now.ToShortTimeString();
+        string message = "Hey there!";
+        @:Today's date is: @date<br />
+        @message
+        <text>Nice to see you're interested in my codes, buddy.</text>
+    }
+</p>
+
+<p>
+    @{
+        int currentYear = DateTime.Now.Year;
+        if (DateTime.IsLeapYear(currentYear))
+        {
+            @currentYear @:is a leap year.
+        }
+        else
+        {
+            @currentYear @:is not a leap year.
+        }
+    }
+</p>
+
+<p>
+    @for (int i = 0; i < 5; i++)
+    {
+        @i.ToString() <br />
+    }
+</p>
